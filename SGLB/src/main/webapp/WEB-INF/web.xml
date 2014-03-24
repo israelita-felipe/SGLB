@@ -1,29 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+    
+    <welcome-file-list>
+        <welcome-file>index.faces</welcome-file>     
+    </welcome-file-list>
+    
+    <!-- Configurações do JavaServer Faces -->
+    
     <context-param>
         <param-name>javax.faces.PROJECT_STAGE</param-name>
         <param-value>Development</param-value>
     </context-param>
+    
     <servlet>
         <servlet-name>Faces Servlet</servlet-name>
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
+        
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
-        <url-pattern>/faces/*</url-pattern>
+        <url-pattern>*.faces</url-pattern>
     </servlet-mapping>
-    <session-config>
-        <session-timeout>
-            30
-        </session-timeout>
-    </session-config>
-    <welcome-file-list>
-        <welcome-file>faces/index.xhtml</welcome-file>
-    </welcome-file-list>
     
     <!-- SEGURANCA -->
-    
     <security-constraint>
         <display-name>Bloqueio ao acessar arquivos xhtml</display-name>
         <web-resource-collection>
@@ -33,18 +37,7 @@
         <auth-constraint/>
     </security-constraint>
     
-    <!-- PRIMEFACES -->
-    
-    <dependency>
-        <groupID>org.primefaces.themes</groupID>
-        <artifactID>twitter bootstrap</artifactID>
-        <version>1.0.10</version>
-    </dependency>
-    
-    <context-param>
-        <param-name>primefaces.THEME</param-name>
-        <param-value>twitter bootstrap</param-value>
-    </context-param>
+    <!-- Configurações do PrimeFaces -->
     
     <servlet>
         <servlet-name>Resource Servlet</servlet-name>
@@ -54,15 +47,5 @@
         <servlet-name>Resource Servlet</servlet-name>
         <url-pattern>/primefaces_resource/*</url-pattern>
     </servlet-mapping>
-    
-    <!-- FILTRO DE UPLOAD -->
-    
-    <filter>
-        <filter-name>PrimeFaces FilerUpload Filter</filter-name>
-        <filter-class>org.primefaces.webapp.filter.FileUploadFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>PrimeFaces FilerUpload Filter</filter-name>
-        <servlet-name>Faces Servlet</servlet-name>
-    </filter-mapping>
+        
 </web-app>
