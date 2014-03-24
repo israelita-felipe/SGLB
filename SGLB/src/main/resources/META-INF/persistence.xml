@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="br.com.sglb_SGLB_war_1.0-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>br.com.sglb.model.entities.CategoriaEconomica</class>
+    <class>br.com.sglb.model.entities.Subalinea</class>
+    <class>br.com.sglb.model.entities.Deducao</class>
+    <class>br.com.sglb.model.entities.Rubrica</class>
+    <class>br.com.sglb.model.entities.PossuiPermissao</class>
+    <class>br.com.sglb.model.entities.Agencia</class>
+    <class>br.com.sglb.model.entities.Conta</class>
+    <class>br.com.sglb.model.entities.Aliquota</class>
+    <class>br.com.sglb.model.entities.Detalhamento</class>
+    <class>br.com.sglb.model.entities.IdentificacaoAviso</class>
+    <class>br.com.sglb.model.entities.Usuario</class>
+    <class>br.com.sglb.model.entities.Origem</class>
+    <class>br.com.sglb.model.entities.Credito</class>
+    <class>br.com.sglb.model.entities.ContemAliquota</class>
+    <class>br.com.sglb.model.entities.Ficha</class>
+    <class>br.com.sglb.model.entities.Permissao</class>
+    <class>br.com.sglb.model.entities.Especie</class>
+    <class>br.com.sglb.model.entities.Fechamento</class>
+    <class>br.com.sglb.model.entities.Alinea</class>
+    <class>br.com.sglb.model.entities.Banco</class>
+    <class>br.com.sglb.model.entities.Debito</class>
+    <class>br.com.sglb.model.entities.Cidade</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/SGLB"/>
+      <property name="javax.persistence.jdbc.password" value="1509199215091992"/>
+      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+      <property name="javax.persistence.jdbc.user" value="postgres"/>
+    </properties>
+  </persistence-unit>
+</persistence>
