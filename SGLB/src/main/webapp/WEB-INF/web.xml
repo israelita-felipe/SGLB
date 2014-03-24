@@ -21,4 +21,48 @@
     <welcome-file-list>
         <welcome-file>faces/index.xhtml</welcome-file>
     </welcome-file-list>
+    
+    <!-- SEGURANCA -->
+    
+    <security-constraint>
+        <display-name>Bloqueio ao acessar arquivos xhtml</display-name>
+        <web-resource-collection>
+            <web-resource-name>xhtml files</web-resource-name>
+            <url-pattern>*.xhtml</url-pattern>
+        </web-resource-collection>
+        <auth-constraint/>
+    </security-constraint>
+    
+    <!-- PRIMEFACES -->
+    
+    <dependency>
+        <groupID>org.primefaces.themes</groupID>
+        <artifactID>twitter bootstrap</artifactID>
+        <version>1.0.10</version>
+    </dependency>
+    
+    <context-param>
+        <param-name>primefaces.THEME</param-name>
+        <param-value>twitter bootstrap</param-value>
+    </context-param>
+    
+    <servlet>
+        <servlet-name>Resource Servlet</servlet-name>
+        <servlet-class>org.primefaces.resource.ResourceServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Resource Servlet</servlet-name>
+        <url-pattern>/primefaces_resource/*</url-pattern>
+    </servlet-mapping>
+    
+    <!-- FILTRO DE UPLOAD -->
+    
+    <filter>
+        <filter-name>PrimeFaces FilerUpload Filter</filter-name>
+        <filter-class>org.primefaces.webapp.filter.FileUploadFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>PrimeFaces FilerUpload Filter</filter-name>
+        <servlet-name>Faces Servlet</servlet-name>
+    </filter-mapping>
 </web-app>

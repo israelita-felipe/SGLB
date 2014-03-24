@@ -55,9 +55,9 @@ public class Aliquota implements Serializable {
     private String descricao;
     @Column(name = "usuario")
     private Integer usuario;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "aliquota")
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "aliquota")
     private List<Deducao> deducaoList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "contaId")
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "contaId")
     private List<ContemAliquota> contemAliquotaList;
 
     public Aliquota() {
