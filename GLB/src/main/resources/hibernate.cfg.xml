@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory name="hibernate_session">
+    <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+    <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+    <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/SGLB</property>
+    <property name="hibernate.connection.username">postgres</property>
+    <property name="hibernate.connection.password">1509199215091992</property>
+    
+    <!-- configuração sql -->
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.format_sql">true</property>
+    
+    <!-- atualização automatica das tabelas -->
+    <property name="hibernate.hbm2ddl.auto">update</property>
+    
+    <!-- mapeamento -->
+    <mapping class="br.com.sglb.model.entities.Agencia"/>
+    <mapping class="br.com.sglb.model.entities.Alinea"/>
+    <mapping class="br.com.sglb.model.entities.Aliquota"/>
+    <mapping class="br.com.sglb.model.entities.Banco"/>
+    <mapping class="br.com.sglb.model.entities.CategoriaEconomica"/>
+    <mapping class="br.com.sglb.model.entities.Cidade"/>
+    <mapping class="br.com.sglb.model.entities.Conta"/>
+    <mapping class="br.com.sglb.model.entities.ContemAliquota"/>
+    <mapping class="br.com.sglb.model.entities.Credito"/>
+    <mapping class="br.com.sglb.model.entities.Debito"/>
+    <mapping class="br.com.sglb.model.entities.Deducao"/>
+    <mapping class="br.com.sglb.model.entities.Detalhamento"/>
+    <mapping class="br.com.sglb.model.entities.Especie"/>
+    <mapping class="br.com.sglb.model.entities.Fechamento"/>
+    <mapping class="br.com.sglb.model.entities.FechamentoPK"/>
+    <mapping class="br.com.sglb.model.entities.Ficha"/>
+    <mapping class="br.com.sglb.model.entities.IdentificacaoAviso"/>
+    <mapping class="br.com.sglb.model.entities.Origem"/>
+    <mapping class="br.com.sglb.model.entities.Permissao"/>
+    <mapping class="br.com.sglb.model.entities.PossuiPermissao"/>
+    <mapping class="br.com.sglb.model.entities.PossuiPermissaoPK"/>
+    <mapping class="br.com.sglb.model.entities.Rubrica"/>
+    <mapping class="br.com.sglb.model.entities.Subalinea"/>
+    <mapping class="br.com.sglb.model.entities.Usuario"/>
+    
+  </session-factory>
+</hibernate-configuration>
