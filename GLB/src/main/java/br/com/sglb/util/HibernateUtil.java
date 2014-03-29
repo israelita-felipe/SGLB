@@ -15,18 +15,13 @@ public class HibernateUtil {
 
         try {
 
-            System.out.println("Tentando configurar a SF");
-
             Configuration configuration = new Configuration().configure();
-
             ServiceRegistry serviceRegistry = new ServiceRegistryBuilder().
                     applySettings(configuration.getProperties()).buildServiceRegistry();
 
             sessionFactory = configuration.buildSessionFactory(serviceRegistry);
-
-            System.out.println("Session factory criada corretamente");
+            
         } catch (Exception ex) {
-            System.out.println("Ocorreu um  erro ao iniciar a SF. " + ex);
             throw new ExceptionInInitializerError(ex);
         }
 

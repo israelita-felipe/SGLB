@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>br.com.sglb</groupId>
-    <artifactId>GLB</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <artifactId>S.G.L.B.</artifactId>
+    <version>1.0</version>
     <packaging>war</packaging>
 
-    <name>GLB</name>
+    <name>Sistema de Gerenciamento de Lançamentos Bancários</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
@@ -34,6 +34,11 @@
             <groupId>unknown.binary</groupId>
             <artifactId>hibernate-jpa-2.0-api-1.0.1.Final</artifactId>
             <version>SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>9.2-1004-jdbc41</version>
         </dependency>
         <dependency>
             <groupId>javax</groupId>

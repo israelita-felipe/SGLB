@@ -1,25 +1,109 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                template="./../../resources/main.xhtml"
-                xmlns:h="http://xmlns.jcp.org/jsf/html">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"                
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="./../../resources/main.xhtml">
 
     <ui:define name="tarefas">
-        <h:form id="formCidade">
-            <h:outputLabel title="Estado"/>
-            <h:inputText id="estado" value="#{mbCidade.cidade.estado}"/>
+        <p:fieldset legend="Cadastrar Cidades">
             <br/>
-            <h:outputLabel title="Pais"/>
-            <h:inputText id="pais" value="#{mbCidade.cidade.pais}"/>
-            <br/>
-            <h:outputLabel title="Região"/>
-            <h:inputText id="regiao" value="#{mbCidade.cidade.regiao}"/>
-            <br/>
-            <h:outputLabel title="Nome"/>
-            <h:inputText id="nome" value="#{mbCidade.cidade.regiao}"/>
-            <hr/>
-            <h:commandButton value="Gravar" actionListener="#{mbCidade.addCidade()}"
-        </h:form>
+            <h:form prependId="false" id="formCidade">
+                <p:growl id="mensagemCidade"/>
+                <h:panelGrid columns="2" cellpadding="10" styleClass="panelGrid" id="panelGrid">
+
+                    <h:outputLabel/>
+                    <h:inputHidden id="id" value="#{ManagedBeandCidade.cidade.id}"/> 
+
+                    <h:outputLabel for="nome" value="Nome"/>
+                    <p:inputText id="nome" size="40" value="#{ManagedBeandCidade.cidade.nome}"
+                                 onkeyup="this.value = this.value.toUpperCase()" required="true"
+                                 requiredMessage="Campo obrigatório"/>
+
+                    <h:outputLabel for="estado" value="Estado"/>
+                    <p:inputText id="estado" size="40" value="#{ManagedBeandCidade.cidade.estado}"
+                                 onkeyup="this.value = this.value.toUpperCase()" required="true"
+                                 requiredMessage="Campo obrigatório"/>
+
+                    <h:outputLabel for="regiao" value="Região"/>
+                    <p:inputText id="regiao" size="40" value="#{ManagedBeandCidade.cidade.regiao}"
+                                 onkeyup="this.value = this.value.toUpperCase()" required="true"
+                                 requiredMessage="Campo obrigatório"/>
+
+                    <h:outputLabel for="pais" value="País"/>
+                    <p:inputText id="pais" size="40" value="#{ManagedBeandCidade.cidade.pais}"
+                                 onkeyup="this.value = this.value.toUpperCase()" required="true"
+                                 requiredMessage="Campo obrigatório"/>                    
+                </h:panelGrid>
+                <p:panel>
+                    <p:commandButton value="Salvar" action="#{ManagedBeandCidade.addCidade}"
+                                     image="ui-icon ui-icon-disk" update="@form :formTabela"/>
+                    <p:commandButton value="Cancelar" actionListener="#{ManagedBeandCidade.limpaCidade()}" 
+                                     image="ui-icon ui-icon-close" update="@form"/>
+                </p:panel>
+            </h:form>       
+
+            <h:form id="formTabela">
+                <p:growl id="mensagensTabela"/>
+                <p:dataTable id="dataTable" var="cidade" value="#{ManagedBeandCidade.cidades}"
+                             paginator="true" rows="10" emptyMessage="Nenhum registro encontrado"
+                             paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink}
+                             {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+
+                    <f:facet name="header">Lista de Cidades</f:facet>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Nome"/>
+                        </f:facet>
+                        <h:outputText value="#{cidade.nome}"/>
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Estado"/>
+                        </f:facet>
+                        <h:outputText value="#{cidade.estado}"/>
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Região"/>
+                        </f:facet>
+                        <h:outputText value="#{cidade.regiao}"/>
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="País"/>
+                        </f:facet>
+                        <h:outputText value="#{cidade.pais}"/>
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Ações"/>
+                        </f:facet>
+                        <p:commandButton value="Editar" image="ui-icon ui-icon-pencil"
+                                         process="@this" update="@form :formCidade">
+                            <f:setPropertyActionListener target="#{ManagedBeandCidade.cidade}"
+                                                         value="#{cidade}"/>
+                        </p:commandButton>
+                        <p:commandButton value="Remover" action="#{ManagedBeandCidade.deleteCidade}"
+                                         image="ui-icon ui-icon-close" update="@form">
+                            <f:setPropertyActionListener target="#{ManagedBeandCidade.cidade}"
+                                                         value="#{cidade}"/>
+                        </p:commandButton>
+
+                    </p:column>
+
+                </p:dataTable>
+
+            </h:form>
+
+        </p:fieldset>
     </ui:define>
 
 </ui:composition>

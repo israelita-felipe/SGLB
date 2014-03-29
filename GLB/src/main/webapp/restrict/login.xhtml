@@ -1,15 +1,20 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html"          
-      xmlns:c="http://java.sun.com/jsp/jstl/core"          
+      xmlns:h="http://java.sun.com/jsf/html"                    
       xmlns:p="http://primefaces.org/ui"
         template="./../main.xhtml">
     
-   <ui:composition>
-    <ui:define name="tarefas">
-        <h:commandLink action="/restrict/cadastro/cidade.glb?faces-redirect=true" value="Cadastro de cidade"/>
-    </ui:define>
-   </ui:composition>
+   <h:head>
+        <title>Logar</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:outputLabel>Bem-vindo ao Sistema de Gerenciamento de Lançamentos Bancário</p:outputLabel>
+            <br />
+            <h:commandButton action="/restrict/cadastro/cidade.glb" value="Cadastro de Cidades"/>
+            <br />
+            <h:commandButton action="/restrict/visualizar/cidades.glb" value="Visualização de Cidades"/>
+        </h:form>        
+    </h:body>
 </html>
