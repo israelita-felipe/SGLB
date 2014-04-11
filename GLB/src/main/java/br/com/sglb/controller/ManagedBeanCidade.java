@@ -7,34 +7,49 @@ import br.com.sglb.util.FacesContextUtil;
 import java.io.Serializable;
 import java.util.List;
 import javax.faces.application.FacesMessage;
-import javax.inject.Named;
-import javax.enterprise.context.RequestScoped;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
-@RequestScoped
-@Named("ManagedBeandCidade")
+@ManagedBean(name = "mbCidade")
+@SessionScoped
 public class ManagedBeanCidade implements Serializable {
 
+    // ATRIBUTOS
     private static final long serialVersionUID = 1L;
-
-    private Cidade cidade = new Cidade();
+    private Cidade cidade;
     private List<Cidade> cidades;
 
+    // CONSTRUTORES
+    /**
+     * CONSTRUTOR VAZIO
+     */
     public ManagedBeanCidade() {
     }
 
+    // METODOS
+    /**
+     * CRIACAO DO DAO
+     *
+     * @return
+     */
     private InterfaceDAO<Cidade> cidadeDAO() {
-        InterfaceDAO<Cidade> cidadeDAO = new HibernateDAO<>(Cidade.class, FacesContextUtil.getRequestSession());
+        InterfaceDAO<Cidade> cidadeDAO = new HibernateDAO<Cidade>(Cidade.class, FacesContextUtil.getRequestSession());
         return cidadeDAO;
     }
 
-    public String limpaCidade() {
-        cidade = new Cidade();
-        return editCidade();
+    /**
+     * REDIRECIONA PARA CADASTRO
+     *
+     * @return
+     */
+    public String editarCidade() {
+        return "/restrict/cadastro/cidade.glb";
     }
 
-    public String editCidade() {
-        return "/restrict/cadastro/cidade.glb";
+    public String limpCidade() {
+        cidade = new Cidade();
+        return editarCidade();
     }
 
     public String addCidade() {
@@ -43,25 +58,14 @@ public class ManagedBeanCidade implements Serializable {
         } else {
             updateCidade();
         }
-        limpaCidade();
+        limpCidade();
         return null;
     }
 
     private void insertCidade() {
-        try {
-            cidades = cidadeDAO().getEntities();
-            for (Cidade c : cidades) {
-                if (c.equals(cidade)) {
-                    throw new IllegalArgumentException("Cidade já cadastrada");
-                }
-            }
-            cidadeDAO().save(cidade);
-            FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage(FacesMessage.SEVERITY_INFO, "Gravação efetuada com sucesso", ""));
-        } catch (IllegalArgumentException ex) {
-            FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage(FacesMessage.SEVERITY_ERROR, ex.getMessage(), ""));
-        }
+        cidadeDAO().save(cidade);
+        FacesContext.getCurrentInstance().addMessage(null,
+                new FacesMessage(FacesMessage.SEVERITY_INFO, "Gravação efetuada com sucesso", ""));
     }
 
     private void updateCidade() {
@@ -90,5 +94,4 @@ public class ManagedBeanCidade implements Serializable {
     public void setCidade(Cidade cidade) {
         this.cidade = cidade;
     }
-
 }

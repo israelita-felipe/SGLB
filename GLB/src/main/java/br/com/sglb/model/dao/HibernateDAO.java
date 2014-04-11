@@ -5,10 +5,15 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.criterion.DetachedCriteria;
 
-public class HibernateDAO<T> implements InterfaceDAO<T>, Serializable {
+/**
+ *
+ * @author Israel Araújo
+ * @param <T>
+ */
+public class HibernateDAO<T> implements InterfaceDAO<T>, Serializable{
 
+    // ATRIBUTOS
     private static final long serialVersionUID = 1L;
-    
     private Class<T> classe;
     private Session session;
 
@@ -16,11 +21,10 @@ public class HibernateDAO<T> implements InterfaceDAO<T>, Serializable {
         super();
         this.classe = classe;
         this.session = session;
-    }
-    
+    }   
     
     @Override
-    public void save(T entity) {        
+    public void save(T entity) {
         session.save(entity);
     }
 
@@ -52,14 +56,14 @@ public class HibernateDAO<T> implements InterfaceDAO<T>, Serializable {
     }
 
     @Override
+    public List<T> getEntities() {
+        List<T> entities = (List<T>)session.createCriteria(classe).list();
+        return entities;
+    }
+
+    @Override
     public List<T> getEntitiesByDetachedCriteria(DetachedCriteria criteria) {
         return criteria.getExecutableCriteria(session).list();
     }
-    
-    @Override
-    public List<T> getEntities() {
-        List<T> enties = (List<T>) session.createCriteria(classe).list();
-        return enties;
-    }    
     
 }
