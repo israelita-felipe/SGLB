@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/04/2014 23:32:26 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="br.com.glb.entidades.Aliquota" table="aliquota" schema="public">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="percentagem" type="double">
+            <column name="percentagem" precision="17" scale="17" not-null="true" />
+        </property>
+        <property name="descricao" type="string">
+            <column name="descricao" not-null="true" />
+        </property>
+        <property name="usuario" type="java.lang.Integer">
+            <column name="usuario" />
+        </property>
+        <set name="contemAliquotas" table="contem_aliquota" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="conta_id" not-null="true" />
+            </key>
+            <one-to-many class="br.com.glb.entidades.ContemAliquota" />
+        </set>
+        <set name="deducaos" table="deducao" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="aliquota" not-null="true" />
+            </key>
+            <one-to-many class="br.com.glb.entidades.Deducao" />
+        </set>
+    </class>
+</hibernate-mapping>

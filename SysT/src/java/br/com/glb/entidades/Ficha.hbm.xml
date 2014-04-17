@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/04/2014 23:32:26 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="br.com.glb.entidades.Ficha" table="ficha" schema="public">
+        <id name="numero" type="int">
+            <column name="numero" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="detalhamento" class="br.com.glb.entidades.Detalhamento" fetch="select">
+            <column name="detalhamento" not-null="true" />
+        </many-to-one>
+        <many-to-one name="rubrica" class="br.com.glb.entidades.Rubrica" fetch="select">
+            <column name="rubrica" not-null="true" />
+        </many-to-one>
+        <many-to-one name="alinea" class="br.com.glb.entidades.Alinea" fetch="select">
+            <column name="alinea" not-null="true" />
+        </many-to-one>
+        <many-to-one name="especie" class="br.com.glb.entidades.Especie" fetch="select">
+            <column name="especie" not-null="true" />
+        </many-to-one>
+        <many-to-one name="subalinea" class="br.com.glb.entidades.Subalinea" fetch="select">
+            <column name="subalinea" not-null="true" />
+        </many-to-one>
+        <many-to-one name="origem" class="br.com.glb.entidades.Origem" fetch="select">
+            <column name="origem" not-null="true" />
+        </many-to-one>
+        <many-to-one name="categoriaEconomica" class="br.com.glb.entidades.CategoriaEconomica" fetch="select">
+            <column name="categoria_economica" not-null="true" />
+        </many-to-one>
+        <property name="descricao" type="string">
+            <column name="descricao" not-null="true" />
+        </property>
+        <property name="usuario" type="java.lang.Integer">
+            <column name="usuario" />
+        </property>
+        <set name="identificacaoAvisos" table="identificacao_aviso" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ficha_id" not-null="true" />
+            </key>
+            <one-to-many class="br.com.glb.entidades.IdentificacaoAviso" />
+        </set>
+    </class>
+</hibernate-mapping>

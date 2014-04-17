@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/04/2014 23:32:26 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="br.com.glb.entidades.Permissao" table="permissao" schema="public">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="permissao" type="string">
+            <column name="permissao" not-null="true" />
+        </property>
+        <property name="usuario" type="java.lang.Integer">
+            <column name="usuario" />
+        </property>
+        <set name="possuiPermissaos" table="possui_permissao" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="permissao_id" not-null="true" />
+            </key>
+            <one-to-many class="br.com.glb.entidades.PossuiPermissao" />
+        </set>
+    </class>
+</hibernate-mapping>

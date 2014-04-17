@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/04/2014 23:32:26 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="br.com.glb.entidades.Debito" table="debito" schema="public">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="conta" class="br.com.glb.entidades.Conta" fetch="select">
+            <column name="conta" not-null="true" />
+        </many-to-one>
+        <property name="dataCompensado" type="date">
+            <column name="data_compensado" length="13" />
+        </property>
+        <property name="dataLancamento" type="date">
+            <column name="data_lancamento" length="13" not-null="true" />
+        </property>
+        <property name="descricao" type="string">
+            <column name="descricao" not-null="true" />
+        </property>
+        <property name="documento" type="string">
+            <column name="documento" not-null="true" />
+        </property>
+        <property name="valor" type="double">
+            <column name="valor" precision="17" scale="17" not-null="true" />
+        </property>
+        <property name="usuario" type="java.lang.Integer">
+            <column name="usuario" />
+        </property>
+    </class>
+</hibernate-mapping>

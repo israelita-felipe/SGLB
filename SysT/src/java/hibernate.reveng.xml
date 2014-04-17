@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="SGLB" match-schema="public"/>
+  <table-filter match-name="origem"/>
+  <table-filter match-name="detalhamento"/>
+  <table-filter match-name="identificacao_aviso"/>
+  <table-filter match-name="agencia"/>
+  <table-filter match-name="especie"/>
+  <table-filter match-name="subalinea"/>
+  <table-filter match-name="fechamento"/>
+  <table-filter match-name="alinea"/>
+  <table-filter match-name="ficha"/>
+  <table-filter match-name="possui_permissao"/>
+  <table-filter match-name="debito"/>
+  <table-filter match-name="rubrica"/>
+  <table-filter match-name="cidade"/>
+  <table-filter match-name="banco"/>
+  <table-filter match-name="contem_aliquota"/>
+  <table-filter match-name="categoria_economica"/>
+  <table-filter match-name="credito"/>
+  <table-filter match-name="deducao"/>
+  <table-filter match-name="conta"/>
+  <table-filter match-name="usuario"/>
+  <table-filter match-name="aliquota"/>
+  <table-filter match-name="permissao"/>
+</hibernate-reverse-engineering>

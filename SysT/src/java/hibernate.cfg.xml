@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/SGLB</property>
+        <property name="hibernate.connection.username">postgres</property>
+        <property name="hibernate.connection.password">1509199215091992</property>
+        <!-- configuração sql -->
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+        <!-- atualização automatica das tabelas -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <!-- mapeamento -->
+        <mapping class="br.com.glb.entidades.ContemAliquota" resource="br/com/glb/entidades/ContemAliquota.hbm.xml"/>
+        <mapping class="br.com.glb.entidades.Fechamento" resource="br/com/glb/entidades/Fechamento.hbm.xml"/>
+        <mapping class="br.com.glb.entidades.Credito" resource="br/com/glb/entidades/Credito.hbm.xml"/>
+        <mapping class="br.com.glb.entidades.Banco" resource="br/com/glb/entidades/Banco.hbm.xml"/>
+        <mapping class="br.com.glb.entidades.Subalinea" resource="br/com/glb/entidades/Subalinea.hbm.xml"/>
+        <mapping class="br.com.glb.entidades.CategoriaEconomica" resource="br/com/glb/entidades/CategoriaEconomica.hbm.xml"/>
+        <mapping class="br.com.glb.entidades.Agencia" resource="br/com/glb/entidades/Agencia.hbm.xml"/>
+        <mapping class="br.com.glb.entidades.Cidade" resource="br/com/glb/entidades/Cidade.hbm.xml"/>
+        <mapping class="br.com.glb.entidades.Deducao" resource="br/com/glb/entidades/Deducao.hbm.xml"/>
+        <mapping class="br.com.glb.entidades.PossuiPermissao" resource="br/com/glb/entidades/PossuiPermissao.hbm.xml"/>
+        <mapping class="br.com.glb.entidades.Detalhamento" resource="br/com/glb/entidades/Detalhamento.hbm.xml"/>
+        <mapping class="br.com.glb.entidades.Ficha" resource="br/com/glb/entidades/Ficha.hbm.xml"/>
+        <mapping class="br.com.glb.entidades.Rubrica" resource="br/com/glb/entidades/Rubrica.hbm.xml"/>
+        <mapping class="br.com.glb.entidades.Usuario" resource="br/com/glb/entidades/Usuario.hbm.xml"/>
+        <mapping class="br.com.glb.entidades.Debito" resource="br/com/glb/entidades/Debito.hbm.xml"/>
+        <mapping class="br.com.glb.entidades.Origem" resource="br/com/glb/entidades/Origem.hbm.xml"/>
+        <mapping class="br.com.glb.entidades.IdentificacaoAviso" resource="br/com/glb/entidades/IdentificacaoAviso.hbm.xml"/>
+        <mapping class="br.com.glb.entidades.Especie" resource="br/com/glb/entidades/Especie.hbm.xml"/>
+        <mapping class="br.com.glb.entidades.Permissao" resource="br/com/glb/entidades/Permissao.hbm.xml"/>
+        <mapping class="br.com.glb.entidades.Alinea" resource="br/com/glb/entidades/Alinea.hbm.xml"/>
+        <mapping class="br.com.glb.entidades.Conta" resource="br/com/glb/entidades/Conta.hbm.xml"/>
+        <mapping class="br.com.glb.entidades.Aliquota" resource="br/com/glb/entidades/Aliquota.hbm.xml"/>        
+    </session-factory>
+</hibernate-configuration>

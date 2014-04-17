@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/04/2014 23:32:26 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="br.com.glb.entidades.ContemAliquota" table="contem_aliquota" schema="public">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="aliquota" class="br.com.glb.entidades.Aliquota" fetch="select">
+            <column name="conta_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="conta" class="br.com.glb.entidades.Conta" fetch="select">
+            <column name="aliquota_id" not-null="true" />
+        </many-to-one>
+        <property name="usuario" type="java.lang.Integer">
+            <column name="usuario" />
+        </property>
+    </class>
+</hibernate-mapping>

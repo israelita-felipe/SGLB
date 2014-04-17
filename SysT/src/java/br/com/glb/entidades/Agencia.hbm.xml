@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11/04/2014 23:32:26 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="br.com.glb.entidades.Agencia" table="agencia" schema="public">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="banco" class="br.com.glb.entidades.Banco" fetch="select">
+            <column name="banco_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="cidade" class="br.com.glb.entidades.Cidade" fetch="select">
+            <column name="cidade_id" not-null="true" />
+        </many-to-one>
+        <property name="digito" type="string">
+            <column name="digito" not-null="true" />
+        </property>
+        <property name="cep" type="string">
+            <column name="cep" not-null="true" />
+        </property>
+        <property name="logradouro" type="string">
+            <column name="logradouro" not-null="true" />
+        </property>
+        <property name="numero" type="string">
+            <column name="numero" not-null="true" />
+        </property>
+        <property name="descricao" type="string">
+            <column name="descricao" not-null="true" />
+        </property>
+        <property name="usuario" type="java.lang.Integer">
+            <column name="usuario" />
+        </property>
+        <set name="contas" table="conta" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="agencia_id" not-null="true" />
+            </key>
+            <one-to-many class="br.com.glb.entidades.Conta" />
+        </set>
+    </class>
+</hibernate-mapping>
